@@ -1,4 +1,4 @@
-/* var minhaPromise = function(){
+var minhaPromise = function(){
     return new Promise(function(resolve, reject){
         var xhr = new XMLHttpRequest();
         xhr.open('GET', 'https://api.github.com/users/gabrielcesarrogerio');
@@ -22,4 +22,4 @@ minhaPromise()
     })
     .catch(function(error) {
         console.warn(error);
-    }); */
+    }); 
