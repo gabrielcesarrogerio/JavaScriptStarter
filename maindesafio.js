@@ -18,24 +18,68 @@
 //     .catch(function(error){
 //         console.log(error);
 //     })
+
+// Exercício 2
+
+// var list = document.createElement('ul');
+// var appendicite = document.querySelector('#app');
+// appendicite.appendChild(list); 
+// var btnElement = document.querySelector('button.botao');
+// btnElement.onclick = function () {
+
+//     var input = document.querySelector('input#user').value;
+//     axios.get('https://api.github.com/users/' + input + '/repos')
+//         .then(function(response){
+//             var content = response.data;
+//             content.forEach((index) => {
+//                 var newrepo = document.createElement('li');
+//                 var listsearch = document.querySelector('ul');
+//                 listsearch.appendChild(newrepo);
+//                 newrepo.innerHTML = index.name;
+//                 console.log(index);
+//             })
+//         })
+//         .catch(function(error){
+//             console.log(error);
+//         })
+
+    
+// }
+
+//Exercício 3
+
 var list = document.createElement('ul');
 var appendicite = document.querySelector('#app');
 appendicite.appendChild(list); 
 var btnElement = document.querySelector('button.botao');
 btnElement.onclick = function () {
-    var input = document.querySelector('input#user').value;
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'https://api.github.com/users/' + input);
-    xhr.send(null);
-    xhr.onreadystatechange = function () {
-        if(xhr.readyState === 4){
-            console.log(JSON.parse(xhr.responseText));
-            return JSON.parse(xhr.responseText);
-        }
-        var newrepo = document.createElement('li');
+    
+        var loading = document.createElement('li');
         var listsearch = document.querySelector('ul');
-        listsearch.appendChild(newrepo);
+        listsearch.appendChild(loading);
+        var loadingtext = document.createTextNode('Carregando...');
+        loading.appendChild(loadingtext);
+        
+   
+        var input = document.querySelector('input#user').value;
+        axios.get('https://api.github.com/users/' + input + '/repos')
+        .then(function(response){
+            var content = response.data;
+            content.forEach((index) => {
+                var newrepo = document.createElement('li');
+                var listsearch = document.querySelector('ul');
+                listsearch.appendChild(newrepo);
+                newrepo.innerHTML = index.name;
+                console.log(index);
+            })
+        })
+        .catch(function(error){
+            var loaded = document.createElement('li');
+            listsearch.appendChild(loaded);
+            var inexist = document.createTextNode('Este usuário não existe!');
+            loaded.appendChild(inexist);
+            console.log(error);
+        })
 
-    }
-
+    
 }
