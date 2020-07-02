@@ -19,7 +19,7 @@
 //         console.log(error);
 //     })
 var list = document.createElement('ul');
-var appendicite = document.querySelector('#app').
+var appendicite = document.querySelector('#app');
 appendicite.appendChild(list); 
 var btnElement = document.querySelector('button.botao');
 btnElement.onclick = function () {
@@ -35,7 +35,7 @@ btnElement.onclick = function () {
         var newrepo = document.createElement('li');
         var listsearch = document.querySelector('ul');
         listsearch.appendChild(newrepo);
-        
+
     }
 
 }
